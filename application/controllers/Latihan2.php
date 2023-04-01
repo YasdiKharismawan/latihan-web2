@@ -17,8 +17,8 @@ class Latihan2 extends CI_Controller {
             'Kode Matakuliah',
             'required|min_length[3]',
             [
-                'required' => '* Kode Matakuliah Harus diisi',
-                'min_lenght' => '* Kode terlalu pendek'
+                'required' => 'Kode Matakuliah Harus diisi',
+                'min_lenght' => ' Kode terlalu pendek'
             ]
         );
         $this->form_validation->set_rules (
