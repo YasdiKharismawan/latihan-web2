@@ -33,5 +33,34 @@ class mahasiswa extends CI_Controller
   
         redirect("mahasiswa/index");  
     }  
+
+    function edit($nim)
+    {
+        $where = array('nim' => $nim);
+        $data['mahasiswa'] = $this->m_mahasiswa->edit_data($where, 'mahasiswa')->result();
+        $this->load->view('update_mahasiswa', $data);
+    }
+
+    function update()
+    {
+        $nim = $this->input->post('nim');
+        $nama = $this->input->post('nama');
+        $jurusan = $this->input->post('jurusan');
+        $alamat = $this->input->post('alamat');
+
+        $data = array(
+            'nama' => $nama,
+            'jurusan' => $jurusan,
+            'alamat' => $alamat
+        );
+
+        $where = array(
+            'nim' => $nim
+        );
+
+        $this->m_mahasiswa->update_data($where, $data, 'mahasiswa');
+        redirect('mahasiswa/index');
+    }
 }
+
 ?>
